@@ -13,7 +13,7 @@ import (
 // This is provided for compatibility between protobuf and amino implementations.
 type EncodingConfig struct {
 	InterfaceRegistry types.InterfaceRegistry
-	Marshaler         codec.Marshaler
+	Codec         codec.Codec
 	TxConfig          client.TxConfig
 	Amino             *codec.LegacyAmino
 }
@@ -27,7 +27,7 @@ func makeEncodingConfig() EncodingConfig {
 
 	return EncodingConfig{
 		InterfaceRegistry: interfaceRegistry,
-		Marshaler:         marshaler,
+		Codec:             codec,
 		TxConfig:          txCfg,
 		Amino:             amino,
 	}
@@ -41,4 +41,4 @@ func MakeEncodingConfig(moduleBasics module.BasicManager) EncodingConfig {
 	moduleBasics.RegisterLegacyAminoCodec(encodingConfig.Amino)
 	moduleBasics.RegisterInterfaces(encodingConfig.InterfaceRegistry)
 	return encodingConfig
-}
+}`
