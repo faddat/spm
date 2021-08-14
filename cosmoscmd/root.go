@@ -125,7 +125,7 @@ func NewRootCmd(
 
 	encodingConfig := MakeEncodingConfig(moduleBasics)
 	initClientCtx := client.Context{}.
-		WithJSONMarshaler(encodingConfig.Marshaler).
+		WithJSONCodec(encodingConfig.Codec).
 		WithInterfaceRegistry(encodingConfig.InterfaceRegistry).
 		WithTxConfig(encodingConfig.TxConfig).
 		WithLegacyAmino(encodingConfig.Amino).
@@ -178,7 +178,7 @@ func initRootCmd(
 	buildApp AppBuilder,
 	options rootOptions,
 ) {
-	authclient.Codec = encodingConfig.Marshaler
+	authclient.Codec = encodingConfig.Codec
 
 	rootCmd.AddCommand(
 		genutilcli.InitCmd(moduleBasics, defaultNodeHome),
