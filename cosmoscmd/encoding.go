@@ -41,4 +41,4 @@ func MakeEncodingConfig(moduleBasics module.BasicManager) EncodingConfig {
 	moduleBasics.RegisterLegacyAminoCodec(encodingConfig.Amino)
 	moduleBasics.RegisterInterfaces(encodingConfig.InterfaceRegistry)
 	return encodingConfig
-}`
+}
